@@ -1,5 +1,6 @@
 import React from "react";
-import styled from 'styled-components'
+import { LinkContainer } from "react-router-bootstrap";
+import styled from "styled-components";
 import { Navbar, Nav, Container } from "react-bootstrap";
 
 const Header = () => {
@@ -7,14 +8,23 @@ const Header = () => {
     <header>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">ProShop</Navbar.Brand>
+          <LinkContainer  to='/'>
+            <Navbar.Brand>ProShop</Navbar.Brand>
+          </LinkContainer>
+
           <LeftContainer>
-          <Nav className="me-auto">
-           
-            <Nav.Link href="#features"><i className="fas fa-shopping-cart"></i>Cart</Nav.Link>
-            <Nav.Link href="#pricing"><i className="fas fa-"> </i>SignIn</Nav.Link>
-  
-          </Nav>
+            <Nav className="me-auto">
+              <LinkContainer to='/cart'>
+                <Nav.Link>
+                  <i className="fas fa-shopping-cart"></i>Cart
+                </Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='SignIn'>
+                <Nav.Link>
+                  <i className="fas fa- "> </i>SignIn
+                </Nav.Link>
+              </LinkContainer>
+            </Nav>
           </LeftContainer>
         </Container>
       </Navbar>
@@ -24,5 +34,4 @@ const Header = () => {
 
 export default Header;
 
-const LeftContainer=styled.div`
-`
+const LeftContainer = styled.div``;
