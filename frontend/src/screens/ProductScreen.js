@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
 import Review from "../components/Review";
-import products from "../products";
+import axios from "axios";
 const ProductScreen = ({ match }) => {
-  const product = products.find((p) => p._id === match.params.id);
+  const [product, setProduct] = useState([]);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await axios.get(`/api/products/${match.params.id}`);
+      setProduct(data);
+    };
+    fetchProducts();
+  }, [match]);
   return (
     <>
       <Button className="my-3">
@@ -48,11 +55,15 @@ const ProductScreen = ({ match }) => {
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
-              <Row>
-               <Button className="btn-block" type="button" disabled={product.countInStock === 0} >
-                     Add To Cart
-                </Button></Row>
-               
+                <Row>
+                  <Button
+                    className="btn-block"
+                    type="button"
+                    disabled={product.countInStock === 0}
+                  >
+                    Add To Cart
+                  </Button>
+                </Row>
               </ListGroup.Item>
             </ListGroup>
           </Card>
