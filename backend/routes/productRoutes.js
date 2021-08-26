@@ -1,9 +1,4 @@
-NODE_ENV=development
-PORT=5000
-MONGO_URL=mongodb+srv://akash:jodjodjod@proshop.cbkdn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
-
-
-import express, { Router } from "express";
+import express from "express";
 import asyncHandler from "express-async-handler";
 const router = express.Router();
 import Product from "../models/productModels.js";
@@ -14,20 +9,20 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const product = await Product.find({});
+  
     res.json(product)
   })
 );
 //@description  fectsh single products
 //@route GET/api/products/:id
 //@access Public 
-router.get("/:id", (req, res) => {
+router.get("/:id/",asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
   if (product) {
     res.json(product);
   } else {
-    res.status(404).json({
-      message: "product not found".pink.inverse,
-    });
+    res.status(404)
+    throw new Error("product not found")
   }
-});
-export default Router;
+}));
+export default router;
