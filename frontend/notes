@@ -1,4 +1,4 @@
-import React from "react";
+<!-- import React from "react";
 
 const ProductScreen = ({ match }) => {
   const product = products.find((p) => p._id === match.params.id);
@@ -9,4 +9,16 @@ const ProductScreen = ({ match }) => {
   );
 };
 
-export default ProductScreen;
+export default ProductScreen; -->
+
+  <!-- <Form on>
+           
+           <Form.Group>
+
+           <ButtonContainer>
+
+           <Button type="submit" >LogIn</Button>
+           </ButtonContainer>
+          </Form>
+        
+    </Row> -->
